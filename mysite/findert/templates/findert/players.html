@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Team Finder - platform for searching your teammates </title>
+    <style>
+        .layer{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        height: 100px;
+        width: 1920px;
+        background: #4682B4;
+    }
+
+        .img{
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 837px;
+            width: 1920px;
+        }
+        .test{
+            position: absolute;
+            top: 230px;
+            left: 670px;
+            height: 700px;
+            width: 600px;
+            background: url("https://wallpaperset.com/w/full/7/2/8/462752.jpg");
+        }
+        .fortest{
+            position: absolute;
+            top: 230px;
+            left: 880px;
+            height: 700px;
+            width: 10px;
+            background-color: #4682B4;
+        }
+        .players{
+            position: absolute;
+            left: 250px;
+        }
+        .filter{
+            position: absolute;
+        }
+    </style>
+</head>
+<img class="img" src="https://i.pinimg.com/originals/b7/27/60/b72760dcd163ac579b55287aafea5616.jpg" alt="SCREENSHOT">
+<div class="layer"></div>
+<div class="test">
+      <form method="post" action="players/filter/">
+      {% csrf_token %}
+      <div class="filter">
+    <p><b><u> Filters</u> </b></p>
+        <p>Language* <br>
+        <select name="language">
+        <option>Choose your language</option>
+        <option value="English">English</option>
+        <option value="Russian">Russian</option>
+        <option value="Ukrainian">Ukrainian</option>
+        </select>
+    </p>
+          <p>Skill level* <br>
+      <select name="skill">
+        <option>Choose optional level</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+      </select></p>
+      <p>Rank* <br>
+      <select name ="rank" >
+        <option>Select rank</option>
+          <option value="Silver I">Silver I</option>
+          <option value="Silver II">Silver II</option>
+          <option value="Silver III">Silver III</option>
+          <option value="Silver IV">Silver IV</option>
+          <option value="Silver Elite">Silver Elite</option>
+          <option value="Silver Elite Master">Silver Elite Master</option>
+          <option value="Gold Nova I">Gold Nova I</option>
+          <option value="Gold Nova II">Gold Nova II</option>
+          <option value="Gold Nova III">Gold Nova III</option>
+          <option value="Gold Nova Master">Gold Nova Master</option>
+          <option value="Master Guardian I">Master Guardian I</option>
+          <option value="Master Guardian II">Master Guardian II</option>
+          <option value="Master Guardian Elite">Master Guardian Elite</option>
+          <option value="Distinguished Master Guardian">Distinguished Master Guardian</option>
+          <option value="Legendary Eagle">Legendary Eagle</option>
+          <option value="Legendary Eagle Master">Legendary Eagle Master</option>
+          <option value="Supreme Master First Class">Supreme Master First Class</option>
+          <option value="The Global Elite">The Global Elite</option>
+      </select></p>
+        <p>Main Role* <br>
+        <select name="main_role">
+        <option>Choose your role</option>
+        <option value="Assault">Assault</option>
+        <option value="Sniper">Sniper</option>
+        <option value="Support">Support</option>
+        </select>
+    </p>
+
+        <button type="submit">Done</button>
+      </div>
+      <div class="players">
+      <p> Пользователи, подходящие под ваш запрос (сначала введите сам запрос):</p>
+          {% for name  in play %}
+              <p> {{ name.player_name }}</p>
+              {% if name.team_id == NULL %}
+                  <p> Не состоит в команде</p>
+              {% else %}
+                  <p> Команда игрока: {{ name.team_id.team_name }} </p>
+              {% endif %}
+              <p> Такт. Роль: {{ name.player_tacticalrole }}</p>
+              <p> <a href="{{name.steam_link}}">Steam link</a></p>
+              ------------------------------
+          {% endfor %}
+      </div>
+      </form>
+
+</div>
+<div class="fortest"></div>
+</body>
+</html>

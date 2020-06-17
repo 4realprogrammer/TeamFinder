@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Team Finder - platform for searching your teammates </title>
+    <style>
+        .layer{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        height: 100px;
+        width: 1920px;
+        background: #4682B4;
+    }
+        .a{
+            position: absolute;
+            top: 35px;
+            left: 50px;
+            font-family: Arial;
+            font-size: 220%;
+        }
+        .center{
+            position: absolute;
+            top: 35px;
+            left: 900px;
+            font-family: Arial;
+            font-size: 200%;
+            color: white;
+            background-color: blue;
+            border: blue;
+        }
+
+        .img{
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 837px;
+            width: 1920px;
+        }
+        .test{
+            position: absolute;
+            top: 230px;
+            left: 670px;
+            height: 500px;
+            width: 600px;
+            background: url("https://wallpaperset.com/w/full/7/2/8/462752.jpg");
+        }
+        .fortest{
+            position: absolute;
+            top: 230px;
+            left: 820px;
+            height: 500px;
+            width: 10px;
+            background-color: #4682B4;
+        }
+        .players{
+            position: absolute;
+            left: 170px;
+        }
+        .info{
+            position: absolute;
+        }
+    </style>
+</head>
+<img class="img" src="https://i.pinimg.com/originals/b7/27/60/b72760dcd163ac579b55287aafea5616.jpg" alt="SCREENSHOT">
+<div class="layer">
+</div>
+<div class="a"> <b> TeamFinder </b> </div>
+<p><a class="center" href="{%  url 'player' %}">Players</a></p>
+<div class="test">
+    <div class="players">
+    <b> <p>Уровень ранга:</p></b>{{ Player.player_rank }} <br>
+    <b>Social:</b> <br>
+    <a href ="{{ Player.faceit_link }}"> Faceit </a>
+    <br>
+    <a href="{{ Player.steam_link }}"> Steam </a>
+    <br>
+    <b> <u><p>Игровой стиль:</p></u></b> {{ Player.player_mainrole }}, {{ Player.player_tacticalrole }}
+    <br>
+        <p> Команда: </p>
+        {% if Player.team_id == NULL %}
+            <p>У Вас нет команды!</p>
+            <a href="{%  url 'createTeam' %}">Create Team</a>
+        {% else %}
+            <p> Команда игрока: {{ Player.team_id.team_name }} </p>
+        {% endif %}
+    </div>
+    <div class="info">
+    <b> <p> (Уровень игры) </p></b>     {{ Player.player_skill }} <br>
+    <b> <p> Язык общения: </p></b> {{ Player.player_language }} <br>
+    <b><p> Никнейм: </p></b> {{ Player.player_name }} <br>
+    <b><p> Игровая цель: </p></b> {{ Player.player_goal }}
+    <b><p> Страна: </p></b> {{ Player.player_country }} <br>
+    </div>
+</div>
+
+<div class="fortest"></div>
+</body>
+</html>

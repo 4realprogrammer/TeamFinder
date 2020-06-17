@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Team Finder - platform for searching your teammates </title>
+    <style>
+        .layer{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        height: 100px;
+        width: 1920px;
+        background: #4682B4;
+    }
+
+        .img{
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 837px;
+            width: 1920px;
+        }
+        .test{
+            position: absolute;
+            top: 230px;
+            left: 670px;
+            height: 400px;
+            width: 600px;
+            background: url("https://wallpaperset.com/w/full/7/2/8/462752.jpg");
+        }
+
+    </style>
+</head>
+<body>
+<img class="img" src="https://i.pinimg.com/originals/b7/27/60/b72760dcd163ac579b55287aafea5616.jpg" alt="SCREENSHOT">
+<div class="layer"></div>
+<div class="test">
+  <form method="post">
+      {% csrf_token %}
+      <p><b>Team Info </b></p>
+      <p>Name Of Team*
+      <input type="text" name="name" value="{{ name }}"></p>
+      <p>Team Main Goal*
+        <select name="goal">
+        <option>Choose your goal</option>
+        <option value="To have fun">To have fun</option>
+        <option value="To play competitively">To play competitively</option>
+        <option value="To become a pro">To become a pro</option>
+        </select>
+    </p>
+          <p>Team Country*
+        <select name="country">
+        <option>Choose your country</option>
+        <option value="Ukraine">Ukraine</option>
+        <option value="Russia">Russia</option>
+        <option value="USA">USA</option>
+        </select>
+    </p>
+
+          <p>Team Language*
+        <select name="language">
+        <option>Choose your language</option>
+        <option value="English">English</option>
+        <option value="Russian">Russian</option>
+        <option value="Ukrainian">Ukrainian</option>
+        </select>
+    </p>
+          <p>Region Of Team Server Location*
+        <select name="region">
+        <option>Choose your server</option>
+        <option value="EU East">EU East</option>
+        <option value="America">America</option>
+        <option value="CIS">CIS</option>
+        </select>
+    </p>
+          <button type="submit">Create new team</button>
+  </form>
+</div>
+</body>
+</html>

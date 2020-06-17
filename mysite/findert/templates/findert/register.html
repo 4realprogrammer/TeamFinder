@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Team Finder - platform for searching your teammates </title>
+    <style>
+        .layer{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        height: 100px;
+        width: 1920px;
+        background: #4682B4;
+    }
+        .a{
+            position: absolute;
+            top: 35px;
+            left: 50px;
+            font-family: Arial;
+            font-size: 220%;
+        }
+        .left1{
+            position: absolute;
+            top: 35px;
+            right: 150px;
+            font-family: Arial;
+            font-size: 150%;
+            color: blue;
+            background-color: white;
+            border: white;
+
+        }
+        .left2{
+            position: absolute;
+            top: 35px;
+            right: 40px;
+            font-family: Arial;
+            font-size: 150%;
+            color: white;
+            background-color: blue;
+            border: blue;
+        }
+        .img{
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 837px;
+            width: 1920px;
+        }
+        .test{
+            position: absolute;
+            top: 170px;
+            left: 620px;
+            height: 700px;
+            width: 700px;
+            background: url("https://wallpaperset.com/w/full/7/2/8/462752.jpg");
+        }
+    </style>
+</head>
+<body>
+<img class="img" src="https://i.pinimg.com/originals/b7/27/60/b72760dcd163ac579b55287aafea5616.jpg" alt="SCREENSHOT">
+<div class="layer">
+</div>
+<div class="a"> <b> TeamFinder </b> </div>
+    <p><button class="left1" onclick="window.open({% url 'login:login' %})">Login</button></p>
+    <p><a class="left2" href="{% url 'register:register' %}">Register</a></p>
+<div class="test">
+  <form method="post">
+      {% csrf_token %}
+      <p><b> Create Profile </b></p>
+      <p>Email*
+      <input type="text" name="email" value="{{ email }}"></p>
+      <p>Username*
+      <input type="text" name="username" value="{{ username }}"></p>
+      <p>Password*
+      <input type="text" name="password" value="{{ password }}"></p>
+      <p>FACEIT Account*
+      <input type="text" name="faceit" value="{{ faceit }}"></p>
+      <p>Steam link*
+      <input type="text" name="steam" value="{{ steam }}"></p>
+      <p><b> Skills and Roles </b></p>
+      <p>Rank*
+      <select name ="rank" >
+        <option>Select rank</option>
+          <option value="Silver I">Silver I</option>
+          <option value="Silver II">Silver II</option>
+          <option value="Silver III">Silver III</option>
+          <option value="Silver IV">Silver IV</option>
+          <option value="Silver Elite">Silver Elite</option>
+          <option value="Silver Elite Master">Silver Elite Master</option>
+          <option value="Gold Nova I">Gold Nova I</option>
+          <option value="Gold Nova II">Gold Nova II</option>
+          <option value="Gold Nova III">Gold Nova III</option>
+          <option value="Gold Nova Master">Gold Nova Master</option>
+          <option value="Master Guardian I">Master Guardian I</option>
+          <option value="Master Guardian II">Master Guardian II</option>
+          <option value="Master Guardian Elite">Master Guardian Elite</option>
+          <option value="Distinguished Master Guardian">Distinguished Master Guardian</option>
+          <option value="Legendary Eagle">Legendary Eagle</option>
+          <option value="Legendary Eagle Master">Legendary Eagle Master</option>
+          <option value="Supreme Master First Class">Supreme Master First Class</option>
+          <option value="The Global Elite">The Global Elite</option>
+      </select></p>
+
+      <p>Skill level*
+      <select name="skill">
+        <option>Choose optional level</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+      </select></p>
+
+    <p>Main Role*
+        <select name="main_role">
+        <option>Choose your role</option>
+        <option value="Assault">Assault</option>
+        <option value="Sniper">Sniper</option>
+        <option value="Support">Support</option>
+        </select>
+    </p>
+
+    <p>Tactical Role*
+        <select name="tactical_role">
+        <option>Choose your role</option>
+        <option value="Captain">Captain</option>
+        <option value="Coach">Coach</option>
+        <option value="Strategist">Strategist</option>
+        </select>
+    </p>
+
+    <p>Server Region*
+        <select name="region">
+        <option>Choose your server</option>
+        <option value="EU East">EU East</option>
+        <option value="America">America</option>
+        <option value="CIS">CIS</option>
+        </select>
+    </p>
+
+    <p>Your Main Goal*
+        <select name="goal">
+        <option>Choose your goal</option>
+        <option value="To have fun">To have fun</option>
+        <option value="To play competitively">To play competitively</option>
+        <option value="To become a pro">To become a pro</option>
+        </select>
+    </p>
+
+    <p>Your Country*
+        <select name="country">
+        <option>Choose your country</option>
+        <option value="Ukraine">Ukraine</option>
+        <option value="Russia">Russia</option>
+        <option value="USA">USA</option>
+        </select>
+    </p>
+
+    <p>Language*
+        <select name="language">
+        <option>Choose your language</option>
+        <option value="English">English</option>
+        <option value="Russian">Russian</option>
+        <option value="Ukrainian">Ukrainian</option>
+        </select>
+    </p>
+    <button type="submit">Done</button>
+</form>
+</div>
+</body>
+</html>
